@@ -1,0 +1,26 @@
+<div class="container my-5 py-5">
+  <h1 class="text-center display-1">URL Shortener</h1>
+
+  <div class="row my-5">
+    <div class="col-12 col-md-10 col-lg-8 col-xl-6 mx-auto">
+      <form class="my-5" *ngIf="urlForm" [formGroup]="urlForm" (ngSubmit)="onSubmitUrlForm()">
+        <div class="form-group mb-3">
+          <label for="urlInput">Your URL</label>
+          <input type="url" formControlName="url" placeholder="https://www.example.com/your-very-long-url" id="urlInput" class="form-control">
+        </div>
+        <div class="d-flex">
+          <button class="btn btn-primary mx-auto" type="submit" [disabled]="urlForm.invalid">Submit</button>
+        </div>
+      </form>
+
+      <div *ngIf="error" class="alert alert-danger" role="alert">
+        {{ error }}
+      </div>
+
+      <div *ngIf="shortUrl" class="alert alert-success" role="alert">
+        <span class="fw-bold">Your shorter URL:</span> {{ shortUrl.shortUrl }}
+      </div>
+
+    </div>
+  </div>
+</div>
